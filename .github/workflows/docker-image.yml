@@ -22,6 +22,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: Dockerfile.toolbox
           registry: docker.pkg.github.com
           repository: arouene/f32/toolbox
           tag_with_ref: true
