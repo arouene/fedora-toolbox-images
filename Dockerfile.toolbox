@@ -1,0 +1,11 @@
+FROM registry.fedoraproject.org/f32/fedora-toolbox:32
+
+RUN dnf upgrade -y \
+ && dnf install -y \
+      fish \
+      fzf \
+      jq \
+      ripgrep \
+      tmux \
+      vim \
+ && dnf clean all
