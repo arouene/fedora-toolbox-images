@@ -9,5 +9,3 @@ RUN dnf upgrade -y \
       tmux \
       vim \
  && dnf clean all
- 
-COPY README.md /
