@@ -12,3 +12,9 @@ RUN dnf upgrade -y \
       tmux \
       vim \
  && dnf clean all
+
+# Install gopass
+RUN curl -Lo gopass.tar.gz https://github.com/$(curl -Ls https://github.com/gopasspw/gopass/releases/latest | sed -n 's/.*href=\"\(.*-linux-amd64.tar.gz\).*/\1/p') \
+ && tar xf gopass.tar.gz gopass
+ && install gopass /usr/local/bin/
+ && rm gopass*
