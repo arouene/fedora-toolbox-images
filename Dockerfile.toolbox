@@ -4,8 +4,11 @@ RUN dnf upgrade -y \
  && dnf install -y \
       fish \
       fzf \
+      htop \
       jq \
+      nmap \
       ripgrep \
+      socat \
       tmux \
       vim \
  && dnf clean all
