@@ -1,0 +1,25 @@
+FROM registry.fedoraproject.org/f32/fedora-toolbox:32
+
+ENV PLAYBOOKS ~/Projets/infra-lucca
+
+RUN dnf upgrade -y \
+ && dnf install -y \
+      fish \
+      fzf \
+      genisoimage \
+      jq \
+      p7zip \
+      ripgrep \
+      syslinux-nonlinux \
+      tmux \
+      vim \
+      xorriso \
+ && dnf clean all
+
+RUN test ! -d "$PLAYBOOKS" \
+ && git clone git@github.com:LuccaSA/Infra.Lucca.git "$PLAYBOOKS" \
+ && python3 -m venv --system-site-packages "$PLAYBOOKS/venv" \
+ && source "$PLAYBOOKS/venv/bin/activate" \
+ && pip install --upgrade pip \
+ && pip install -r "$PLAYBOOKS/requirements.txt" \
+ && ansible-galaxy role install -r requirements.yml
