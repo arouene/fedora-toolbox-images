@@ -6,5 +6,7 @@ Toolbox image build for Fedora 32, using some packages and configuration.
 
 # Installation
 
-  podman login docker.pkg.github.com
-  toolbox create -c fedora-toolbox-32 -i "docker.pkg.github.com/arouene/f32/toolbox:latest"
+```
+podman login docker.pkg.github.com
+toolbox create -c fedora-toolbox-32 -i "docker.pkg.github.com/arouene/f32/toolbox:latest"
+```
