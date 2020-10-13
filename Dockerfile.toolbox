@@ -14,7 +14,10 @@ RUN dnf upgrade -y \
  && dnf clean all
 
 # Install starship
-RUN curl -fsSL https://starship.rs/install.sh | bash
+RUN curl -L -o starship.sh https://starship.rs/install.sh \
+ && chmod +x starship.sh \
+ && ./starship.sh --yes \
+ && rm starship.sh
 
 # Install gopass
 RUN curl -Lo gopass.tar.gz https://github.com/$(curl -Ls https://github.com/gopasspw/gopass/releases/latest | sed -n 's/.*href=\"\(.*-linux-amd64.tar.gz\).*/\1/p') \
