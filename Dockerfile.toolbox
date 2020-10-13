@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/f32/fedora-toolbox:32
+FROM registry.fedoraproject.org/f33/fedora-toolbox:33
 
 RUN dnf upgrade -y \
  && dnf install -y \
@@ -6,12 +6,15 @@ RUN dnf upgrade -y \
       fzf \
       htop \
       jq \
-      nmap \
       ripgrep \
       socat \
       tmux \
-      vim \
+      neovim \
+      glibc-langpack-en \
  && dnf clean all
+
+# Install starship
+RUN curl -fsSL https://starship.rs/install.sh | bash
 
 # Install gopass
 RUN curl -Lo gopass.tar.gz https://github.com/$(curl -Ls https://github.com/gopasspw/gopass/releases/latest | sed -n 's/.*href=\"\(.*-linux-amd64.tar.gz\).*/\1/p') \
